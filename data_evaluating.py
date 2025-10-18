@@ -11,7 +11,7 @@ def compute_global_order(orientations):
     sumOrientation = np.sum(orientations[np.newaxis,:,:],axis=1)
     return np.divide(np.sqrt(np.sum(sumOrientation**2,axis=1)), len(orientations))[0]
 
-def plot_global_order(orientations, save_path=None):
+def plot_global_order(orientations, save_path=None, show=True):
     data = []
     for t in range(len(orientations)):
         data.append(compute_global_order(orientations[t]))
@@ -19,6 +19,7 @@ def plot_global_order(orientations, save_path=None):
     plt.plot(data)
     if save_path != None:
         plt.savefig(save_path)
-    plt.show()
+    if show:
+        plt.show()
     plt.close()
 
